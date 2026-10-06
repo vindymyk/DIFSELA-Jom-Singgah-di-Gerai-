@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#39a852">
+<title>Jom Singgah di Gerai! — Diftong Tahun 1</title>
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;font-family:"Trebuchet MS",Arial,sans-serif;color:#263238;
+  background:linear-gradient(#9ee7ff 0 43%,#c9f2b7 43% 100%);
+  min-height:100vh;
+}
+body:before{
+  content:"";display:block;position:fixed;inset:0;pointer-events:none;opacity:.22;
+  background:
+   radial-gradient(circle at 10% 12%,#fff 0 35px,transparent 36px),
+   radial-gradient(circle at 15% 10%,#fff 0 24px,transparent 25px),
+   radial-gradient(circle at 82% 16%,#fff 0 30px,transparent 31px);
+}
+.app{width:min(96%,820px);margin:auto;padding:18px 0 36px;position:relative}
+.card{
+ background:rgba(255,255,255,.97);border:4px solid #fff;border-radius:28px;
+ box-shadow:0 12px 30px rgba(35,75,95,.18);padding:24px;
+}
+.route{
+ display:flex;align-items:center;justify-content:center;gap:10px;
+ margin-bottom:15px;font-weight:900;color:#176b35
+}
+.road{
+ height:9px;flex:1;max-width:260px;background:#59636a;border-radius:8px;
+ position:relative
+}
+.road:after{content:"";position:absolute;left:0;right:0;top:3px;border-top:3px dashed #fff}
+.car{font-size:2.7rem;animation:drive 1.8s ease-in-out infinite alternate}
+@keyframes drive{to{transform:translateX(10px)}}
+h1{text-align:center;color:#16753b;font-size:clamp(2rem,8vw,3.2rem);margin:4px 0}
+.subtitle{text-align:center;font-size:1.08rem;margin:0 0 22px}
+label{display:block;font-weight:900;margin:12px 0 7px}
+input{
+ width:100%;padding:15px;border:3px solid #b9dfc3;border-radius:16px;
+ font-size:1.08rem;outline:none
+}
+input:focus{border-color:#45a85c}
+button{
+ border:0;border-radius:16px;padding:14px 18px;font-size:1.05rem;font-weight:900;
+ cursor:pointer;touch-action:manipulation;transition:.15s
+}
+button:active{transform:scale(.98)}
+.primary{width:100%;margin-top:16px;background:#ffbf2f;color:#5a4100;font-size:1.2rem}
+.hidden{display:none!important}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:8px;font-weight:900}
+.badge{background:#e3f5e8;padding:9px 13px;border-radius:20px}
+.progress{height:13px;background:#e9eef0;border-radius:20px;overflow:hidden;margin:15px 0 22px}
+.progressbar{height:100%;background:#3aaa57;width:0;transition:.3s}
+.stop{
+ background:#fff5cf;border:3px dashed #f0bb37;border-radius:20px;padding:13px;
+ text-align:center;margin-bottom:18px
+}
+.question{text-align:center;color:#16753b;font-weight:900}
+.wordbox{
+ background:#fff9e8;border:3px dashed #ffcc54;border-radius:22px;
+ text-align:center;padding:18px;margin:15px 0
+}
+.word{font-size:clamp(3rem,13vw,5rem);font-weight:900;color:#d94c3d}
+.diph{background:#bfeaff;color:#075985;padding:2px 9px;border-radius:12px}
+.small{font-size:.95rem;color:#60727a}
+.audioBtn{background:#e8ddff;color:#5b21b6;margin-top:7px}
+.choices{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.choice{min-height:78px;background:#f5f8fa;border:3px solid #c8d9df;font-size:1.25rem}
+.choice:hover:not(:disabled){background:#e8f7ff;border-color:#58b8e7}
+.correct{background:#dff7e4!important;border-color:#42a85d!important;color:#176b2b!important}
+.wrong{background:#ffe2e2!important;border-color:#df5757!important;color:#9e2020!important}
+.feedback{min-height:54px;border-radius:16px;padding:13px;text-align:center;font-weight:900;margin-top:15px}
+.feedback.ok{background:#e3f8e8;color:#176b2b}.feedback.no{background:#fff0f0;color:#a52323}
+.next{width:100%;background:#16753b;color:#fff;margin-top:12px}
+.repeat{
+ margin-top:18px;padding:18px;border-radius:20px;background:#eef9ff;
+ border:3px solid #c5e9f8;text-align:center
+}
+.mic{background:#35a853;color:#fff;font-size:1.2rem;width:100%;margin-top:9px}
+.mic.listening{background:#e35d5d;animation:pulse 1s infinite}
+@keyframes pulse{50%{transform:scale(1.02)}}
+.recognized{margin-top:10px;min-height:27px;font-weight:900}
+.result{text-align:center}
+.trophy{font-size:4.8rem}
+.final{font-size:3.7rem;color:#d94c3d;font-weight:900;margin:5px}
+.resultmsg{font-size:1.15rem;line-height:1.5}
+.restart{width:100%;background:#ffbf2f;color:#5a4100;margin-top:12px}
+.note{text-align:center;color:#60727a;font-size:.88rem;margin-top:14px}
+@media(max-width:560px){
+ .card{padding:17px;border-radius:22px}
+ .choices{grid-template-columns:1fr}
+ .topbar{font-size:.9rem}
+}
+</style>
+</head>
+<body>
+<div class="app">
+
+<section id="start" class="card">
+  <div class="route"><span>🏠 Rumah</span><div class="road"></div><span>🏡 Kampung</span></div>
+  <div class="car">🚗💨</div>
+  <h1>Jom Singgah di Gerai!</h1>
+  <p class="subtitle">Belajar menyebut perkataan diftong sambil berjalan ke kampung.</p>
+  <label for="name">👦👧 Nama murid</label>
+  <input id="name" maxlength="30" placeholder="Taip nama kamu...">
+  <button class="primary" onclick="startGame()">🚗 Mula Perjalanan</button>
+  <p class="note">8 hentian • 2 pilihan jawapan • Markah • Pengecaman suara 🎤</p>
+</section>
+
+<section id="game" class="card hidden">
+  <div class="topbar">
+    <span id="hello"></span>
+    <span class="badge">⭐ <span id="score">0</span>/8</span>
+  </div>
+  <div class="progress"><div id="bar" class="progressbar"></div></div>
+
+  <div class="stop">🛍️ <strong>Singgah di gerai!</strong> Pilih sebutan yang betul, kemudian ajuk sebutan.</div>
+  <div id="qnum" class="question"></div>
+
+  <div class="wordbox">
+    <div>👀 Lihat perkataan:</div>
+    <div id="word" class="word"></div>
+    <div class="small">Diftong ditandakan dengan warna biru.</div>
+    <button class="audioBtn" onclick="hear()">🔊 Dengar contoh sebutan</button>
+  </div>
+
+  <div id="choices" class="choices"></div>
+  <div id="feedback" class="feedback"></div>
+
+  <div class="repeat">
+    <strong>🎤 Sekarang giliran kamu!</strong>
+    <div class="small">Tekan butang dan sebut perkataan dengan jelas.</div>
+    <button id="mic" class="mic" onclick="listen()">🎤 Tekan & Sebut</button>
+    <div id="recognized" class="recognized"></div>
+  </div>
+
+  <button id="next" class="next hidden" onclick="nextQuestion()">➡️ Ke Hentian Seterusnya</button>
+</section>
+
+<section id="result" class="card result hidden">
+  <div class="trophy">🏆</div>
+  <h2>Tahniah, <span id="rname"></span>!</h2>
+  <p>Perjalanan ke kampung telah selesai.</p>
+  <div class="final"><span id="finalScore">0</span>/8</div>
+  <p id="resultMsg" class="resultmsg"></p>
+  <button class="restart" onclick="restart()">🔄 Pergi Lagi</button>
+  <p class="note">Cuba sebut semua perkataan sekali lagi untuk meningkatkan kemahiran.</p>
+</section>
+</div>
+
+<script>
+const questions=[
+ {word:"gerai",html:"ger<span class='diph'>ai</span>",choices:["ge-ra-i","ge-rai"],answer:1},
+ {word:"limau",html:"lim<span class='diph'>au</span>",choices:["li-mau","li-ma-u"],answer:0},
+ {word:"cakoi",html:"cak<span class='diph'>oi</span>",choices:["ca-koi","ca-ko-i"],answer:0},
+ {word:"hijau",html:"hij<span class='diph'>au</span>",choices:["hi-ja-u","hi-jau"],answer:1},
+ {word:"gerai",html:"ger<span class='diph'>ai</span>",choices:["ge-ra-i","ge-rai"],answer:1},
+ {word:"limau",html:"lim<span class='diph'>au</span>",choices:["li-ma-u","li-mau"],answer:1},
+ {word:"cakoi",html:"cak<span class='diph'>oi</span>",choices:["ca-ko-i","ca-koi"],answer:1},
+ {word:"hijau",html:"hij<span class='diph'>au</span>",choices:["hi-jau","hi-ja-u"],answer:0}
+];
+
+let current=0,score=0,name="",answered=false,recognition=null,listening=false;
+
+function startGame(){
+ name=document.getElementById("name").value.trim();
+ if(!name){alert("Sila masukkan nama murid dahulu. 😊");return}
+ current=0;score=0;
+ document.getElementById("start").classList.add("hidden");
+ document.getElementById("result").classList.add("hidden");
+ document.getElementById("game").classList.remove("hidden");
+ document.getElementById("hello").textContent="👋 Hai, "+name+"!";
+ document.getElementById("score").textContent=0;
+ showQuestion();
+}
+function showQuestion(){
+ answered=false;
+ const q=questions[current];
+ document.getElementById("qnum").textContent="Hentian "+(current+1)+" daripada 8";
+ document.getElementById("bar").style.width=(current/8*100)+"%";
+ document.getElementById("word").innerHTML=q.html;
+ const box=document.getElementById("choices");box.innerHTML="";
+ q.choices.forEach((c,i)=>{
+   const b=document.createElement("button");b.className="choice";b.textContent=c;
+   b.onclick=()=>checkAnswer(i);box.appendChild(b);
+ });
+ const f=document.getElementById("feedback");f.className="feedback";f.textContent="";
+ document.getElementById("recognized").textContent="";
+ document.getElementById("next").classList.add("hidden");
+ document.getElementById("mic").disabled=false;
+}
+function checkAnswer(i){
+ if(answered)return;
+ answered=true;
+ const q=questions[current],bs=document.querySelectorAll(".choice");
+ bs.forEach(b=>b.disabled=true);
+ if(i===q.answer){
+   score++;bs[i].classList.add("correct");
+   feedback("✅ Betul! Diftong disebut dalam satu bunyi suku kata.",true);
+ }else{
+   bs[i].classList.add("wrong");bs[q.answer].classList.add("correct");
+   feedback("❌ Belum tepat. Jawapan betul ialah “"+q.choices[q.answer]+"”.",false);
+ }
+ document.getElementById("score").textContent=score;
+ document.getElementById("bar").style.width=((current+1)/8*100)+"%";
+ document.getElementById("next").classList.remove("hidden");
+}
+function feedback(t,ok){
+ const f=document.getElementById("feedback");f.textContent=t;f.className="feedback "+(ok?"ok":"no");
+}
+function nextQuestion(){
+ current++;
+ if(current>=8)showResult();else showQuestion();
+}
+function hear(){
+ const text=questions[current].word;
+ if(!("speechSynthesis" in window)){alert("Pelayar ini tidak menyokong audio.");return}
+ speechSynthesis.cancel();
+ const u=new SpeechSynthesisUtterance(text);u.lang="ms-MY";u.rate=.72;speechSynthesis.speak(u);
+}
+function normalize(s){
+ return s.toLowerCase().normalize("NFD").replace(/[\\u0300-\\u036f]/g,"")
+ .replace(/[^a-z]/g,"").trim();
+}
+function listen(){
+ const SpeechRecognition=window.SpeechRecognition||window.webkitSpeechRecognition;
+ if(!SpeechRecognition){
+   document.getElementById("recognized").textContent="⚠️ Pelayar ini tidak menyokong pengecaman suara. Cuba Google Chrome atau Microsoft Edge.";
+   return;
+ }
+ if(listening){if(recognition)recognition.stop();return}
+ recognition=new SpeechRecognition();
+ recognition.lang="ms-MY";recognition.interimResults=false;recognition.maxAlternatives=3;
+ const btn=document.getElementById("mic"),out=document.getElementById("recognized");
+ listening=true;btn.classList.add("listening");btn.textContent="⏹️ Sedang mendengar...";
+ out.textContent="👂 Mendengar...";
+ recognition.onresult=function(e){
+   const target=normalize(questions[current].word);
+   const alternatives=[];
+   for(let i=0;i<e.results[0].length;i++) alternatives.push(e.results[0][i].transcript);
+   const heard=alternatives[0]||"";
+   const correct=alternatives.some(x=>normalize(x)===target);
+   out.innerHTML=correct
+     ? "🌟 Sebutan kamu: <strong>“"+heard+"”</strong><br>✅ Bagus! Sebutan hampir/tepat dengan perkataan sasaran."
+     : "🗣️ Sebutan kamu: <strong>“"+heard+"”</strong><br>💪 Cuba lagi. Dengar contoh dan sebut <strong>“"+questions[current].word+"”</strong> dengan jelas.";
+ };
+ recognition.onerror=function(e){
+   if(e.error==="not-allowed"||e.error==="service-not-allowed")
+     out.textContent="🔒 Mikrofon belum dibenarkan. Benarkan akses mikrofon pada pelayar, kemudian cuba lagi.";
+   else if(e.error==="no-speech")
+     out.textContent="👂 Tiada suara dikesan. Cuba sebut sekali lagi dengan jelas.";
+   else out.textContent="⚠️ Pengecaman suara tidak berjaya. Cuba lagi.";
+ };
+ recognition.onend=function(){
+   listening=false;btn.classList.remove("listening");btn.textContent="🎤 Tekan & Sebut";
+ };
+ recognition.start();
+}
+function showResult(){
+ document.getElementById("game").classList.add("hidden");
+ document.getElementById("result").classList.remove("hidden");
+ document.getElementById("rname").textContent=name;
+ document.getElementById("finalScore").textContent=score;
+ let msg;
+ if(score===8)msg="🌟 Hebat sekali! Semua jawapan kamu betul. Sebutan diftong kamu sangat baik!";
+ else if(score>=6)msg="👏 Bagus! Kamu sudah mengenal dan menyebut kebanyakan perkataan diftong dengan baik.";
+ else if(score>=4)msg="😊 Syabas! Teruskan latihan menyebut gerai, limau, cakoi dan hijau.";
+ else msg="💪 Jangan berputus asa. Dengar contoh, sebut perlahan-lahan dan cuba lagi!";
+ document.getElementById("resultMsg").textContent=msg;
+}
+function restart(){
+ document.getElementById("result").classList.add("hidden");
+ document.getElementById("game").classList.remove("hidden");
+ current=0;score=0;document.getElementById("score").textContent=0;showQuestion();
+}
+</script>
+</body>
+</html>
